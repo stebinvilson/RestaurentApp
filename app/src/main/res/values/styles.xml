@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppSearchView" parent="Widget.AppCompat.SearchView" >
+        <!-- Text Size -->
+        <item name="android:textSize">20dp</item>
+        <!-- Query Text Color -->
+        <item name="android:textColorPrimary">@color/green</item>
+        <!-- Hint Color -->
+        <item name="android:textColorHint">@color/black</item>
+        <!-- Icon Color -->
+        <item name="android:tint">@color/colorAccent</item>
+    </style>
+
+    <style name="NavigationDrawerStyle">
+
+        <item name="android:textSize">15dp</item><!-- text size in menu-->
+        <item name="fontFamily">@font/black_ops_one</item>
+
+
+        <item name="android:listPreferredItemHeightSmall">40dp</item>
+        <item name="listPreferredItemHeightSmall">40dp</item>
+
+        <!-- item padding left in menu-->
+        <item name="android:listPreferredItemPaddingLeft">8dp</item>
+        <item name="listPreferredItemPaddingLeft">8dp</item>
+
+        <!-- item padding right in menu-->
+        <item name="android:listPreferredItemPaddingRight">8dp</item>
+        <item name="listPreferredItemPaddingRight">8dp</item>
+    </style>
+</resources>

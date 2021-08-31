@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/scrollview_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_card_view">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/restaurant_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:transitionName="fade" />
+            <ImageView
+                android:id="@+id/restaurant_favorite"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_outline_favorite_border_24"/>
+
+    <TextView
+        android:id="@+id/restaurant_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:fontFamily="@font/basic"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/restaurant_image"
+        android:text="success"/>
+
+    <TextView
+        android:id="@+id/restaurant_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/relative_rating"
+        android:text="xczjfyucxg"
+        android:gravity="start"
+        android:textSize="20dp"
+        android:fontFamily="@font/basic"
+        android:textColor="@color/black"
+        android:layout_below="@+id/restaurant_name"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"/>
+
+    <RelativeLayout
+        android:id="@+id/relative_rating"
+        android:layout_width="40dp"
+        android:layout_height="35dp"
+        android:layout_below="@id/restaurant_image"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/rating_background"
+        >
+    <TextView
+        android:id="@+id/restaurant_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="gcv"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"
+        android:textColor="@color/green"
+        android:fontFamily="@font/basic"
+        android:layout_marginEnd="10dp"/>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/res_view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/black"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/restaurant_location"/>
+
+    <TextView
+        android:id="@+id/top_text_foods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Recommended"
+        android:layout_marginStart="10dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:layout_below="@+id/res_view"/>
+
+    <View
+        android:id="@+id/recomended_view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/black"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/top_text_foods"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_restaurant_foods"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/recomended_view"/>
+
+        </RelativeLayout>
+    </ScrollView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bottom_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:visibility="gone"
+        android:backgroundTint="@color/blue"
+        android:elevation="10dp"
+        android:layout_alignParentBottom="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/bottom_cart_items"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/basic"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/move_to_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:drawablePadding="5dp"
+                android:layout_centerVertical="true"
+                android:textSize="20dp"
+                android:drawableEnd="@drawable/ic_baseline_arrow_forward_24"
+                android:text="Move to Cart"
+                android:layout_marginEnd="5dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
+

@@ -1,0 +1,56 @@
+{
+  "FoodItem": [
+    {
+      "Foodname": "Healthy",
+      "Foddid": "0",
+      "FoodImage": "https://thumbs.dreamstime.com/b/healthy-food-selection-healthy-food-selection-fruits-vegetables-seeds-superfood-cereals-gray-background-121936825.jpg"
+    },
+    {
+      "Foodname": "Noodles",
+      "Foddid": "1",
+      "FoodImage": "https://thumbs.dreamstime.com/b/udon-noodles-shrimp-wok-pan-stir-fry-dark-stone-background-85225842.jpg"
+    },
+    {
+      "Foodname": "Shawarma",
+      "Foddid": "2",
+      "FoodImage": "https://thumbs.dreamstime.com/b/gyro-pita-shawarma-souvlaki-two-bread-wraps-meat-skewers-wooden-table-traditional-turkish-greek-food-copy-space-top-view-141842673.jpg"
+    },
+    {
+      "Foodname": "Chicken",
+      "Foddid": "3",
+      "FoodImage": "https://thumbs.dreamstime.com/b/roast-chicken-28656037.jpg"
+    },
+    {
+      "Foodname": "Pizza",
+      "Foddid": "4",
+      "FoodImage": "https://thumbs.dreamstime.com/b/wood-fired-pizza-flames-supreme-meat-vegetable-stone-oven-open-76863994.jpg"
+    },
+    {
+      "Foodname": "Dosa",
+      "Foddid": "5",
+      "FoodImage": "https://thumbs.dreamstime.com/b/south-indian-breakfast-idli-dosa-vada-chutney-sambhar-coconut-sambar-banana-leaf-tea-time-snack-171494128.jpg"
+    },
+    {
+      "Foodname": "Tea",
+      "Foddid": "6",
+      "FoodImage": "https://thumbs.dreamstime.com/b/hot-masala-tea-milk-chai-poured-over-80771375.jpg"
+    },
+    {
+      "Foodname": "Fries",
+      "Foddid": "7",
+      "FoodImage": "https://thumbs.dreamstime.com/b/french-fries-17661700.jpg"
+    },
+    {
+      "Foodname": "Juices",
+      "Foddid": "8",
+      "FoodImage": "https://thumbs.dreamstime.com/b/antioxidant-juices-citrus-apple-plum-blackberry-42525905.jpg"
+    },
+    {
+      "Foodname": "Al Faham",
+      "Foddid": "9",
+      "FoodImage": "https://thumbs.dreamstime.com/b/juicy-grilled-chicken-breast-mayonnaise-salad-al-faham-arabian-dish-juicy-grilled-chicken-breast-mayonnaise-186409215.jpg"
+    }
+
+  ]
+
+}

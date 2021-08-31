@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Fragments.LoginFragment">
+
+    <include
+        android:id="@+id/login_actionbar"
+        layout="@layout/layout_actionbar"/>
+
+    <RelativeLayout
+        android:id="@+id/linear_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/app_welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bungee"
+            android:text="Welcome Back"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="80dp"
+            android:layout_marginStart="10dp"
+            android:textSize="20sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign in to your Account!"
+            android:layout_below="@+id/app_welcome"
+            android:textColor="@color/black"
+            android:layout_marginTop="-10dp"
+            android:layout_marginStart="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:gravity="center">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_phonenumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        app:boxStrokeErrorColor="@android:color/holo_red_dark"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:startIconDrawable="@drawable/ic_baseline_phone_24"
+        app:startIconTint="@color/black"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:focusedByDefault="true"
+        app:hintTextColor="@color/common_google_signin_btn_text_light"
+        app:boxStrokeColor="#246EE9"
+        android:hint="Please enter phone number">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:hint="Please enter phonenumber"
+            android:textColorHint="@color/common_google_signin_btn_text_light"
+            android:inputType="phone"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        app:boxStrokeErrorColor="@android:color/holo_red_dark"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:startIconDrawable="@drawable/ic_baseline_lock_24"
+        app:startIconTint="@color/black"
+        app:hintTextColor="@color/common_google_signin_btn_text_light"
+        app:boxStrokeColor="#246EE9"
+        android:hint="Please enter password">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:textColorHint="@color/common_google_signin_btn_text_light"
+            android:hint="Please enter password"
+            android:inputType="textPassword"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/Btn_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+       android:backgroundTint="@color/black"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:drawableEnd="@drawable/ic_baseline_login_24"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

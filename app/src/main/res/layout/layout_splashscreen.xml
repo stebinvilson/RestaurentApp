@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black">
+
+    <TextView
+        android:id="@+id/app_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quick Eat"
+        android:textStyle="bold"
+        android:textSize="40dp"
+        android:textColor="#3EB489"
+        android:fontFamily="@font/bungee"
+        android:layout_centerInParent="true"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_signin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign In"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:layout_below="@+id/food3"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/white"
+        android:drawableEnd="@drawable/ic_baseline_trending_flat_24"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_marginEnd="10dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:textAllCaps="false"
+        android:layout_above="@+id/food2"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/white"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:drawableEnd="@drawable/ic_baseline_trending_flat_24"
+        android:layout_marginEnd="10dp"/>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/food"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="-10dp"
+        android:layout_marginStart="-29dp"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/food1"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-40dp"
+        android:layout_marginStart="-40dp"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/food2"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="-29dp"
+        android:layout_marginBottom="-10dp"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/food3"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="-40dp"
+        android:layout_marginTop="-40dp"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"/>
+
+</RelativeLayout>

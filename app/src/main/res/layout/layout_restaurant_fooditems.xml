@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="5dp">
+
+   <androidx.cardview.widget.CardView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:elevation="10dp">
+
+       <RelativeLayout
+           android:layout_width="wrap_content"
+           android:layout_height="130dp">
+
+           <ImageView
+               android:id="@+id/rest_food_image"
+               android:layout_width="120dp"
+               android:layout_height="130dp"
+               android:layout_marginBottom="3dp"
+               android:scaleType="fitXY"/>
+
+           <TextView
+               android:id="@+id/res_foodname"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="20dp"
+               android:textStyle="bold"
+               android:layout_toEndOf="@id/rest_food_image"
+               android:textColor="@color/black"
+               android:fontFamily="@font/basic"
+               android:layout_marginStart="10dp"
+               android:layout_marginTop="5dp"/>
+
+           <RatingBar
+               android:id="@+id/res_food_rating"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="10dp"
+               android:layout_marginTop="5dp"
+               android:layout_toEndOf="@+id/rest_food_image"
+               android:layout_below="@+id/res_foodname"
+               android:numStars="5"
+               style="@style/Widget.AppCompat.RatingBar.Small"
+               android:progressTint="#FF9801"
+               />
+           
+           <com.google.android.material.button.MaterialButton
+               android:layout_width="wrap_content"
+               android:layout_height="40dp"
+               android:layout_marginStart="4dp"
+               app:strokeWidth="1dp"
+               android:text="Bestseller"
+               android:textSize="13dp"
+               android:textAllCaps="false"
+               android:textColor="@color/green"
+               app:strokeColor="@color/black"
+               style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+               android:layout_toEndOf="@+id/rest_food_image"
+               android:layout_alignParentBottom="true"/>
+
+           <TextView
+               android:id="@+id/res_price"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="5dp"
+               android:layout_marginEnd="10dp"
+               android:layout_alignParentEnd="true"
+               android:text="149"
+               android:fontFamily="@font/black_ops_one"
+               android:textColor="@color/black"
+               android:textSize="20dp"
+               android:textStyle="bold" />
+
+           <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+               android:id="@+id/food_add_button"
+               android:layout_width="130dp"
+               app:backGroundColor="@color/green"
+               app:textSize="8sp"
+               android:layout_marginEnd="5dp"
+               android:layout_alignParentEnd="true"
+               app:initialNumber="0"
+               android:layout_alignParentBottom="true"
+               android:layout_marginBottom="5dp"
+               app:finalNumber="20"
+               app:textColor="@color/white"
+               android:layout_marginTop="18dp"
+               android:layout_centerHorizontal="true"
+               android:layout_height="wrap_content" />
+
+           <View
+               android:layout_width="match_parent"
+               android:layout_height=".5dp"
+               android:background="@color/green"
+               android:layout_marginStart="2dp"
+               android:layout_alignParentBottom="true"
+               android:layout_marginEnd="2dp"/>
+
+<!--           <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton-->
+<!--               android:id="@+id/number_button"-->
+<!--               android:layout_width="200dp"-->
+<!--               app:backGroundColor="@color/bg_screen1"-->
+<!--               app:textSize="8sp"-->
+<!--               android:layout_marginTop="18dp"-->
+<!--               android:layout_centerHorizontal="true"-->
+<!--               android:layout_height="wrap_content" />-->
+
+
+       </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

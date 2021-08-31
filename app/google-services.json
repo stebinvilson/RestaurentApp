@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "11136917587",
+    "project_id": "quick-food-99454",
+    "storage_bucket": "quick-food-99454.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11136917587:android:5489402a08e5f7a53a26a6",
+        "android_client_info": {
+          "package_name": "com.restoo.restaurentapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "11136917587-i1gfvf2f6cn0peefnn2t1fb48f6na94t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.restoo.restaurentapp",
+            "certificate_hash": "8c3d42146a3625b047342384fbeecccd53d932c0"
+          }
+        },
+        {
+          "client_id": "11136917587-8bs123rg16if4g3s8mgmtjv612gi8r3p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOgr2DvjewOJp-EeSBRkP__tP-a7Nj5fE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "11136917587-8bs123rg16if4g3s8mgmtjv612gi8r3p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

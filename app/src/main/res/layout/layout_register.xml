@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <include
+        android:id="@+id/register_actionbar"
+        layout="@layout/layout_actionbar"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/register_actionbar"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txt_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/register_actionbar"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="80dp"
+        android:fontFamily="serif"
+        android:text="SignUp"
+        android:textColor="@color/black"
+        android:textSize="30dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name_text_input"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        app:hintTextColor="@color/common_google_signin_btn_text_light"
+        app:boxStrokeColor="#246EE9"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:hint="Enter user name"
+        android:layout_below="@id/txt_signup"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/common_google_signin_btn_text_light"
+            android:fontFamily="@font/basic"
+            android:paddingEnd="20dp"
+            android:hint="Enter user name" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phonenumber_text_input"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:hint="Enter phone number"
+        app:hintTextColor="@color/common_google_signin_btn_text_light"
+        app:boxStrokeColor="#246EE9"
+        android:layout_below="@id/name_text_input"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phonenumber_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:inputType="phone"
+            android:fontFamily="@font/basic"
+            android:textColorHint="@color/common_google_signin_btn_text_light"
+            android:textColor="@color/black"
+            android:paddingEnd="20dp"
+            android:hint="Enter phone number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email_text_input"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        app:hintTextColor="@color/common_google_signin_btn_text_light"
+        app:boxStrokeColor="#246EE9"
+        android:layout_marginStart="15dp"
+        android:hint="Enter email address"
+        android:layout_marginEnd="15dp"
+        app:errorEnabled="true"
+        android:layout_below="@id/phonenumber_text_input"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_edit_text"
+            android:layout_width="match_parent"
+            android:paddingStart="20dp"
+            android:fontFamily="@font/basic"
+            android:textColor="@color/black"
+            android:textColorHint="@color/common_google_signin_btn_text_light"
+            android:paddingEnd="20dp"
+            android:layout_height="wrap_content"
+            android:hint="Enter email address" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password_text_input"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        app:boxStrokeColor="#246EE9"
+        android:layout_marginStart="15dp"
+        app:hintTextColor="@color/common_google_signin_btn_text_light"
+        android:layout_marginEnd="15dp"
+        app:passwordToggleTint="@color/common_google_signin_btn_text_light"
+        app:passwordToggleEnabled="true"
+        app:errorEnabled="true"
+        android:layout_below="@id/email_text_input"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:inputType="textPassword"
+            android:textColorHint="@color/common_google_signin_btn_text_light"
+            android:fontFamily="@font/basic"
+            android:textColor="@color/black"
+            android:paddingEnd="20dp"
+            android:hint="Enter password" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/get_started"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/black"
+        android:text="Get Startd"
+        android:layout_below="@+id/password_text_input"/>
+
+    </LinearLayout>
+</RelativeLayout>
