@@ -16,6 +16,7 @@ import com.restoo.restaurentapp.Adapter.RestaurantFoodAdapter
 import com.restoo.restaurentapp.Helper.RestaurantFragmentHelper
 import com.restoo.restaurentapp.Interface.RestaurantFoodItemListner
 import com.restoo.restaurentapp.R
+import com.restoo.restaurentapp.model.CartItem
 import com.restoo.restaurentapp.model.Foodcount
 import com.restoo.restaurentapp.model.RestaurantFood
 import java.util.*
@@ -35,7 +36,7 @@ class RestaurantFragment : Fragment() ,RestaurantFoodItemListner {
     lateinit var mTxtBottomItemCount : TextView
     lateinit var mTxtMoveToCart : TextView
     lateinit var mCardview_bottom : CardView
-    var cartItems : ArrayList<RestaurantFood> = ArrayList()
+    var cartItems : ArrayList<CartItem> = ArrayList()
     lateinit var  helper : RestaurantFragmentHelper
 
     override fun onCreateView(
@@ -148,7 +149,7 @@ class RestaurantFragment : Fragment() ,RestaurantFoodItemListner {
             for ((index, value) in restaurantfoodlist.withIndex()) {
                 for (item in totalfoodcount) {
                     if (item.position == index) {
-                        cartItems.add(value)
+                        cartItems.add(CartItem(count,value))
                     }
                 }
             }

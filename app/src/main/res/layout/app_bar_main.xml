@@ -71,12 +71,13 @@
         android:layout_alignParentEnd="true"/>
     </RelativeLayout>
 
+
     <include
+        layout="@layout/contant_layout"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_below="@id/topbar"
         android:layout_above="@id/bottom_navigation"
-        layout="@layout/contant_layout"
         />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

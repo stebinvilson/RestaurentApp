@@ -15,4 +15,13 @@
 
         <item name="android:windowDisablePreview">true</item>
     </style>
+
+    <style name="Theme.RestaurentApp.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.RestaurentApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.RestaurentApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
