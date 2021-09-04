@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="5dp"
+    android:background="@color/white"
+    tools:context=".Fragments.HomeFragment">
+
+    <ScrollView
+        android:id="@+id/scrollview_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txt_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/anton"
+                android:text="Hi Stebin Vilson,"
+                android:textColor="@color/black"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_eat_what_makes_happy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_below="@id/txt_username"
+                android:text="Eat what makes you happy"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/basic"
+                android:layout_marginBottom="5dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_fooditems"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/txt_eat_what_makes_happy"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/txt_top_offers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_below="@id/recyclerview_fooditems"
+                android:text="My Offers"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/basic"
+                android:layout_marginBottom="5dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_offers"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/txt_top_offers"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/txt_restaurant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Top Restaurants around you"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginStart="10dp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_below="@+id/recyclerview_offers"
+                android:fontFamily="@font/basic"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_restaurants"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_restaurant"/>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

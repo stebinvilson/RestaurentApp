@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.CartFragment">
+
+    <ScrollView
+        android:id="@+id/scrollview_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_card_view">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/foodcart_items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/apply_coupons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@color/white"
+                android:layout_below="@id/foodcart_items"
+                android:layout_marginStart="10dp"
+                android:text="Apply Coupons"
+                android:layout_alignParentEnd="true"
+                android:textStyle="bold"
+                android:gravity="end|center_vertical"
+                android:drawableLeft="@drawable/ic_icons8"
+                app:strokeColor="@color/green"
+                app:strokeWidth="1dp"
+                android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
+                android:textAllCaps="false"
+                android:drawableTint="@color/green"
+                android:textColor="@color/green"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/apply_coupons">
+                <TextView
+                    android:id="@+id/txt_item_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/arapey"
+                    android:text="Item Total"/>
+                <TextView
+                    android:id="@+id/value_item_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="120"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/arapey"
+                    android:textSize="20dp"
+                    android:layout_marginEnd="10dp"/>
+
+                <TextView
+                    android:id="@+id/txt_deliverycharge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_item_total"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/arapey"
+                    android:text="Delivery charge"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/value_deliverycharge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_item_total"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="20dp"
+                    android:fontFamily="@font/arapey"
+                    android:textStyle="bold"
+                    android:text="50"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    android:layout_marginEnd="10dp"/>
+
+                <View
+                    android:id="@+id/view_below_deliverycharge"
+                    android:layout_width="match_parent"
+                    android:layout_height=".7dp"
+                    android:background="@color/green"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/txt_deliverycharge"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"/>
+                <TextView
+                    android:id="@+id/txt_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view_below_deliverycharge"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/arapey"
+                    android:text="Total"
+                    android:textColor="@color/black"
+                    android:textSize="25dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/value_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view_below_deliverycharge"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="20dp"
+                    android:fontFamily="@font/arapey"
+                    android:textStyle="bold"
+                    android:text="150"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/black"
+                    android:layout_marginEnd="10dp"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_proceed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_background"
+        app:backgroundTint="@color/black"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="Place Order"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:drawableTint="@color/green"
+        android:textColor="@color/green"
+        android:drawableEnd="@drawable/ic_baseline_arrow_forward_24"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        />
+
+</RelativeLayout>

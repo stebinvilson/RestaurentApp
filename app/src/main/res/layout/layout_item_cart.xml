@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:layout_marginStart="3dp"
+    android:layout_marginEnd="3dp"
+    android:elevation="10dp"
+    android:layout_marginBottom="3dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:strokeColor="@color/green"
+        android:backgroundTint="@color/black"
+        app:strokeWidth="1.3dp"
+        android:elevation="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/item_cart_image"
+        android:layout_width="100dp"
+        android:scaleType="fitXY"
+        android:layout_height="match_parent"/>
+    <TextView
+        android:id="@+id/txt_cart_fooditemname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/item_cart_image"
+        android:layout_marginTop="10dp"
+        android:text="Chicken Burger"
+        android:textStyle="bold"
+        android:fontFamily="@font/arapey"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_marginStart="10dp"/>
+
+    <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+        android:id="@+id/food_add_button"
+        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        app:backGroundColor="@color/green"
+        app:textSize="8sp"
+        app:initialNumber="0"
+       android:layout_below="@+id/txt_cart_fooditemname"
+        android:layout_toEndOf="@id/item_cart_image"
+        android:layout_marginBottom="5dp"
+        app:finalNumber="20"
+        app:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+         />
+
+    <TextView
+        android:id="@+id/txt_total_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:fontFamily="@font/arapey"
+        android:layout_centerVertical="true"
+        android:text="145"/>
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>
