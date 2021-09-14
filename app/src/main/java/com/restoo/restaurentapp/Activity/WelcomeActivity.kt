@@ -24,8 +24,8 @@ class WelcomeActivity : AppCompatActivity() {
     private lateinit var myViewPagerAdapter: MyViewPagerAdapter
     private lateinit var dotsLayout: LinearLayout
     private lateinit var dots : ArrayList<TextView>
-    private lateinit var btnSkip: Button
-    private lateinit var btnNext: Button
+    private lateinit var mImgSkip: ImageView
+    private lateinit var mImgNext: ImageView
     lateinit var layouts: IntArray
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,8 +35,8 @@ class WelcomeActivity : AppCompatActivity() {
 
         viewPager = findViewById(R.id.view_pager);
         dotsLayout = findViewById(R.id.layoutDots);
-        btnSkip = findViewById(R.id.btn_skip);
-        btnNext = findViewById(R.id.btn_next);
+        mImgSkip = findViewById(R.id.btn_skip);
+        mImgNext = findViewById(R.id.btn_next);
 
         layouts = intArrayOf(
                 R.layout.welcome_slide1,
@@ -48,10 +48,10 @@ class WelcomeActivity : AppCompatActivity() {
 
         myViewPagerAdapter = MyViewPagerAdapter(applicationContext, layouts);
         viewPager.setAdapter(myViewPagerAdapter);
-        btnSkip.setOnClickListener(View.OnClickListener {
+        mImgSkip.setOnClickListener(View.OnClickListener {
 
         })
-        btnNext.setOnClickListener(View.OnClickListener {
+        mImgNext.setOnClickListener(View.OnClickListener {
 
             var current = getItem(+1);
             if (current < layouts.size) {

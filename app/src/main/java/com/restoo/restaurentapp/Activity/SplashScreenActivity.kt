@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.restoo.restaurentapp.Application.QuickEat
 import com.restoo.restaurentapp.R
 
 
@@ -28,7 +29,12 @@ class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_splashscreen)
+        QuickEat.init(this)
         supportActionBar?.hide()
+        if (!QuickEat.UserId.equals("")) {
+            val intent = Intent(this,HomeActivity::class.java)
+            startActivity(intent)
+        }
         Initialisation()
         setScreen()
         Eventlistner()
@@ -56,17 +62,9 @@ class SplashScreenActivity : AppCompatActivity() {
         val wordtoSpan: Spannable =
             SpannableString("Quick Eat")
         wordtoSpan.setSpan(
-            ForegroundColorSpan(Color.parseColor("#246EE9")),
-            0,
-            5,
-            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
+            ForegroundColorSpan(Color.parseColor("#246EE9")), 0, 5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         wordtoSpan.setSpan(
-            ForegroundColorSpan(Color.parseColor("#3EB489")),
-            6,
-            9,
-            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
+            ForegroundColorSpan(Color.parseColor("#3EB489")), 6, 9, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         mTxtAppTitle.setText(wordtoSpan)
     }
 

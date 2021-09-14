@@ -2,9 +2,17 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/abhaya_libre_medium</item>
+        <item>@font/abril_fatface</item>
+        <item>@font/aclonica</item>
         <item>@font/alegreya_sans_sc_medium</item>
+        <item>@font/alfa_slab_one</item>
+        <item>@font/alice</item>
         <item>@font/anton</item>
         <item>@font/arapey</item>
+        <item>@font/arbutus</item>
+        <item>@font/archivo_black</item>
+        <item>@font/asset</item>
+        <item>@font/bangers</item>
         <item>@font/black_ops_one</item>
         <item>@font/bungee</item>
         <item>@font/chelsea_market</item>

@@ -1,10 +1,8 @@
 package com.restoo.restaurentapp.Activity
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
-import com.google.firebase.FirebaseApp
 import com.restoo.restaurentapp.Application.QuickEat
 import com.restoo.restaurentapp.Fragments.LoginFragment
 import com.restoo.restaurentapp.Fragments.RegisterFragment
@@ -16,12 +14,9 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         QuickEat.init(this)
-//        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-//        getWindow().setStatusBarColor(Color.WHITE);
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
         receiveArguments()
-
     }
 
     private fun receiveArguments() {

@@ -11,6 +11,7 @@ import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.gms.tasks.OnCompleteListener
@@ -37,6 +38,7 @@ class RegisterFragment : Fragment() {
     lateinit var mLayoutEmail : TextInputLayout
     var emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+" as String
     lateinit var auth : FirebaseAuth
+    lateinit var mTxtBack : TextView
 
 
     override fun onCreateView(
@@ -53,6 +55,11 @@ class RegisterFragment : Fragment() {
     }
 
     private fun EventListner() {
+
+        mTxtBack.setOnClickListener(View.OnClickListener {
+            activity?.moveTaskToBack(true)
+            activity?.finish()
+        })
 
         mEdtEmail.setOnFocusChangeListener(OnFocusChangeListener { v, hasFocus ->
             if (!hasFocus) {
@@ -99,11 +106,9 @@ class RegisterFragment : Fragment() {
                                                 Toast.makeText(
                                                     activity,
                                                     "Fail to add data $error",
-                                                    Toast.LENGTH_SHORT
-                                                )
-                                                    .show()
+                                                    Toast.LENGTH_SHORT).show()
                                             }
-                                        })
+                                            })
                             }
 
                         } else if (!task.isSuccessful) {
@@ -183,6 +188,7 @@ class RegisterFragment : Fragment() {
         mEdtEmail = view.findViewById(R.id.email_edit_text)
         mEdtPassword = view.findViewById(R.id.password_edit_text)
         mBtnGetstarted = view.findViewById(R.id.get_started)
+        mTxtBack = view.findViewById(R.id.txt_back)
 
     }
 }

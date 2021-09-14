@@ -2,317 +2,206 @@ package com.restoo.restaurentapp.Activity
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.location.Geocoder
 import android.location.Location
+import android.os.AsyncTask
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.restoo.restaurentapp.R
-import org.w3c.dom.Document
-import org.w3c.dom.Node
-import org.w3c.dom.NodeList
+import com.squareup.okhttp.OkHttpClient
+import com.squareup.okhttp.Request
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
-    private lateinit var mMap: GoogleMap
-    var origin: MarkerOptions? = MarkerOptions()
-    var destination:MarkerOptions? = MarkerOptions()
 
-    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-    private var lastKnownLocation: Location? = null
-    private var likelyPlaceNames: Array<String?> = arrayOfNulls(0)
-    private var likelyPlaceAddresses: Array<String?> = arrayOfNulls(0)
-    private var likelyPlaceAttributions: Array<List<*>?> = arrayOfNulls(0)
-    private var likelyPlaceLatLngs: Array<LatLng?> = arrayOfNulls(0)
+    private var mMap: GoogleMap? = null
+    var currentmarker : Marker? = null
+    internal lateinit var mLastLocation: Location
+    var currentlocation : Location? = null
+    internal lateinit var mLocationResult: LocationRequest
+    internal lateinit var mLocationCallback: LocationCallback
+    internal var mCurrLocationMarker: Marker? = null
+    internal var mGoogleApiClient: GoogleApiClient? = null
+    internal lateinit var mLocationRequest: LocationRequest
+    internal var mFusedLocationClient: FusedLocationProviderClient? = null
+    var totlaMarkers :ArrayList<LatLng>? = ArrayList()
 
-    private val defaultLocation = LatLng(-33.8523341, 151.2106085)
-    private var locationPermissionGranted = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
-//        Places.initialize(applicationContext, BuildConfig.MAPS_API_KEY)
-//        placesClient = Places.createClient(this)
 
-        // Construct a FusedLocationProviderClient.
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        val mapFragment = supportFragmentManager
-                .findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment!!.getMapAsync(this)
-
-        //Setting marker to draw route between these two points
-        origin = MarkerOptions().position(LatLng(12.9121, 77.6446)).title("HSR Layout").snippet("origin")
-        destination = MarkerOptions().position(LatLng(12.9304, 77.6784)).title("Bellandur").snippet("destination")
-
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        checkLocationPermission()
 
     }
 
-//    fun getDocument(start: LatLng, end: LatLng, mode: String?): Document? {
-//        val url = ("http://maps.googleapis.com/maps/api/directions/xml?"
-//                + "origin=" + start.latitude + "," + start.longitude
-//                + "&destination=" + end.latitude + "," + end.longitude
-//                + "&sensor=false&units=metric&mode=driving")
-//        try {
-//            val httpClient: HttpClient = DefaultHttpClient()
-//            val localContext: HttpContext = BasicHttpContext()
-//            val httpPost = HttpPost(url)
-//            val response: HttpResponse = httpClient.execute(httpPost, localContext)
-//            val `in`: InputStream = response.getEntity().getContent()
-//            val builder: DocumentBuilder = DocumentBuilderFactory.newInstance()
-//                    .newDocumentBuilder()
-//            return builder.parse(`in`)
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//        }
-//        return null
-//    }
+    private fun checkLocationPermission() {
+        if (ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.ACCESS_FINE_LOCATION) !=
+                PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.ACCESS_COARSE_LOCATION) !=
+                PackageManager.PERMISSION_GRANTED) {
 
-    companion object {
-        private val TAG = MapsActivity::class.java.simpleName
-        private const val DEFAULT_ZOOM = 15
-        private const val PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1
 
-        // Keys for storing activity state.
-        private const val KEY_CAMERA_POSITION = "camera_position"
-        private const val KEY_LOCATION = "location"
+            ActivityCompat.requestPermissions(this,
+                    arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), 1000)
+            return
+        }
 
-        // Used for selecting the current place.
-        private const val M_MAX_ENTRIES = 5
+        val task = mFusedLocationClient?.lastLocation
+        task?.addOnSuccessListener { location ->
+            if (location != null) {
+                currentlocation = location
+                val mapFragment = supportFragmentManager
+                        .findFragmentById(R.id.map) as SupportMapFragment?
+                mapFragment!!.getMapAsync(this)
+            }
+        }
     }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when(requestCode) {
+            1000 -> if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                checkLocationPermission()
+            }
+        }
+    }
+
+
+
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-//        mMap.addMarker(origin)
-//        mMap.addMarker(destination)
-//        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(origin?.getPosition(), 10f))
-
-        updateLocationUI()
-
-        // Get the current location of the device and set the position of the map.
-        getDeviceLocation()
+        val  latlng = LatLng(currentlocation?.latitude!!, currentlocation?.longitude!!)
+        totlaMarkers?.add(latlng)
+        Drawmarker(latlng)
 
 
-//        mMap.setOnMarkerClickListener(OnMarkerClickListener { arg0 -> // Creating a marker
-//            val markerOptions = MarkerOptions()
+
+
+        mMap?.setOnMarkerDragListener(object : GoogleMap.OnMarkerDragListener {
+            override fun onMarkerDragStart(p0: Marker) {
+
+            }
+
+            override fun onMarkerDrag(p0: Marker) {
+
+            }
+
+            override fun onMarkerDragEnd(p0: Marker) {
+                if (currentmarker != null) {
+                    // currentmarker!!.remove()
+                    val newlatlng = LatLng(p0.position.latitude, p0.position.longitude)
+                    totlaMarkers?.add(newlatlng)
+                    Drawmarker(newlatlng)
+                }
+            }
+        })
+    }
+
+    fun getDirectionUrl(origin: LatLng, dest: LatLng) : String {
+
+        val str_origin = "origin=" + origin.latitude.toString() + "," + origin.longitude
+
+        val str_dest = "destination=" + dest.latitude.toString() + "," + dest.longitude
+
+        val sensor = "sensor=false"
+        val mode = "mode=driving"
+
+        val parameters = "$str_origin&$str_dest&$sensor&$mode"
+
+        val output = "json"
+        return "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters
+
+    }
+
+    inner class getDirection(var url: String) : AsyncTask<Void, Void, List<List<LatLng>>> () {
+
+       override fun doInBackground(vararg params: Void?): List<List<LatLng>> {
+            val client = OkHttpClient()
+           val request = Request.Builder().url(url).build()
+           val response = client.newCall(request).execute()
+           val data = response.body().toString()
+           val result = ArrayList<List<LatLng>>()
+           try {
+               var path = ArrayList<LatLng>()
+               path.add(LatLng(totlaMarkers?.get(0)?.latitude!!, totlaMarkers?.get(0)?.longitude!!))
+               path.add(LatLng(totlaMarkers?.get(1)?.latitude!!, totlaMarkers?.get(1)?.longitude!!))
+
+               result.add(path)
+
+           } catch (e: Exception) {
+
+           }
+           return  result
+        }
+
+        override fun onPostExecute(result: List<List<LatLng>>?) {
+            super.onPostExecute(result)
+            val lineoptions = PolylineOptions()
+            for (i in result?.indices!!) {
+                lineoptions.addAll(result[i])
+                lineoptions.width(10f)
+                lineoptions.color(Color.RED)
+                lineoptions.geodesic(true)
+            }
+            mMap?.addPolyline(lineoptions)
+        }
+    }
+
+
+    private fun Drawmarker(latlng: LatLng) {
+        val markeroption = MarkerOptions().position(latlng).title("my position").snippet(getAddress(latlng.latitude, latlng.longitude)).draggable(true)
+
+        mMap?.animateCamera(CameraUpdateFactory.newLatLng(latlng))
+        mMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(latlng, 15f))
+        currentmarker = mMap?.addMarker(markeroption)
+        currentmarker?.showInfoWindow()
+
+//        if (totlaMarkers?.size!! >1) {
+//            val line = PolylineOptions().add(LatLng(totlaMarkers!!.get(0).latitude,
+//                    totlaMarkers!!.get(0).longitude),
+//                    LatLng(totlaMarkers!!.get(1).latitude,
+//                            totlaMarkers!!.get(1).longitude))
+//                    .width(5f).color(Color.RED)
 //
-//            // Setting the position for the marker
-//            markerOptions.position(arg0.position) // get Latlong
-//            // Now you use above logic
-//            true
-//        })
-//        var doc: Document? = getDocument(origin!!.position, destination!!.position,
-//                "driving")
-//
-//        val directionPoint: ArrayList<LatLng>? = doc?.let { getDirection(it) }
-//        val rectLine = PolylineOptions().width(3f).color(
-//                Color.RED)
-//
-//        if (directionPoint != null) {
-//            for (i in 0 until directionPoint.size) {
-//                rectLine.add(directionPoint[i])
-//            }
+//            mMap?.addPolyline(line)
+//            totlaMarkers = ArrayList()
 //        }
-//        val polylin = mMap.addPolyline(rectLine)
 
-//        rectLine.add(origin?.position)
-//        rectLine.add(destination?.position)
-//        val polylin = mMap.addPolyline(rectLine)
-
-    }
-
-
-    private fun updateLocationUI() {
-        if (mMap == null) {
-            return
-        }
-        try {
-            if (locationPermissionGranted) {
-                mMap?.isMyLocationEnabled = true
-                mMap?.uiSettings?.isMyLocationButtonEnabled = true
-            } else {
-                mMap?.isMyLocationEnabled = false
-                mMap?.uiSettings?.isMyLocationButtonEnabled = false
-               // lastKnownLocation = null
-                getLocationPermission()
-            }
-        } catch (e: SecurityException) {
-            Log.e("Exception: %s", e.message, e)
-        }
-    }
-    private fun getDeviceLocation() {
-        /*
-         * Get the best and most recent location of the device, which may be null in rare
-         * cases when a location is not available.
-         */
-        try {
-            if (locationPermissionGranted) {
-                val locationResult = fusedLocationProviderClient.lastLocation
-                locationResult.addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Set the map's camera position to the current location of the device.
-                        lastKnownLocation = task.result
-                        if (lastKnownLocation != null) {
-                            mMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                                    LatLng(lastKnownLocation!!.latitude,
-                                            lastKnownLocation!!.longitude), DEFAULT_ZOOM.toFloat()))
-
-                            var lat : LatLng = LatLng(lastKnownLocation!!.latitude,
-                                    lastKnownLocation!!.longitude)
-                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(lat, 15.0f))
-                            mMap.addMarker(MarkerOptions().position(lat).title("my location"))
-
-                        }
-                    } else {
-                        Log.d(TAG, "Current location is null. Using defaults.")
-                        Log.e(TAG, "Exception: %s", task.exception)
-                        mMap?.moveCamera(CameraUpdateFactory
-                                .newLatLngZoom(defaultLocation, DEFAULT_ZOOM.toFloat()))
-                        mMap?.uiSettings?.isMyLocationButtonEnabled = false
-                    }
-                }
-            }
-        } catch (e: SecurityException) {
-            Log.e("Exception: %s", e.message, e)
+        if (totlaMarkers?.size == 2) {
+            val url = getDirectionUrl(totlaMarkers?.get(0)!!, totlaMarkers?.get(1)!!)
+            getDirection(url).execute()
+            totlaMarkers = ArrayList()
         }
     }
 
-    fun getDirection(doc: Document): ArrayList<LatLng>? {
-        val nl1: NodeList
-        var nl2: NodeList
-        var nl3: NodeList
-        val listGeopoints = ArrayList<LatLng>()
-        nl1 = doc.getElementsByTagName("step")
-        if (nl1.getLength() > 0) {
-            for (i in 0 until nl1.getLength()) {
-                val node1: Node = nl1.item(i)
-                nl2 = node1.getChildNodes()
-                var locationNode: Node = nl2
-                        .item(getNodeIndex(nl2, "start_location"))
-                nl3 = locationNode.getChildNodes()
-                var latNode: Node = nl3.item(getNodeIndex(nl3, "lat"))
-                var lat: Double = latNode.getTextContent().toDouble()
-                var lngNode: Node = nl3.item(getNodeIndex(nl3, "lng"))
-                var lng: Double = lngNode.getTextContent().toDouble()
-                listGeopoints.add(LatLng(lat, lng))
-                locationNode = nl2.item(getNodeIndex(nl2, "polyline"))
-                nl3 = locationNode.getChildNodes()
-                latNode = nl3.item(getNodeIndex(nl3, "points"))
-                val arr: ArrayList<LatLng> = decodePoly(latNode.getTextContent())!!
-                for (j in 0 until arr.size) {
-                    listGeopoints.add(LatLng(arr[j].latitude, arr[j].longitude))
-                }
-                locationNode = nl2.item(getNodeIndex(nl2, "end_location"))
-                nl3 = locationNode.getChildNodes()
-                latNode = nl3.item(getNodeIndex(nl3, "lat"))
-                lat = latNode.getTextContent().toDouble()
-                lngNode = nl3.item(getNodeIndex(nl3, "lng"))
-                lng = lngNode.getTextContent().toDouble()
-                listGeopoints.add(LatLng(lat, lng))
-            }
-        }
-        return listGeopoints
+    private fun getAddress(latitude: Double, longitude: Double): String? {
+        val geocoder = Geocoder(this, Locale.getDefault())
+        val address= geocoder.getFromLocation(latitude, longitude, 1)
+        return address[0].getAddressLine(0).toString()
+
     }
 
-    private fun decodePoly(encoded: String): ArrayList<LatLng>? {
-        val poly = ArrayList<LatLng>()
-        var index = 0
-        val len = encoded.length
-        var lat = 0
-        var lng = 0
-        while (index < len) {
-            var b: Int
-            var shift = 0
-            var result = 0
-            do {
-                b = encoded[index++].toInt() - 63
-                result = result or (b and 0x1f shl shift)
-                shift += 5
-            } while (b >= 0x20)
-            val dlat = if (result and 1 != 0) (result shr 1).inv() else result shr 1
-            lat += dlat
-            shift = 0
-            result = 0
-            do {
-                b = encoded[index++].toInt() - 63
-                result = result or (b and 0x1f shl shift)
-                shift += 5
-            } while (b >= 0x20)
-            val dlng = if (result and 1 != 0) (result shr 1).inv() else result shr 1
-            lng += dlng
-            val position = LatLng(lat.toDouble() / 1E5, lng.toDouble() / 1E5)
-            poly.add(position)
-        }
-        return poly
-    }
-
-    private fun getNodeIndex(nl: NodeList, nodename: String): Int {
-        for (i in 0 until nl.length) {
-            if (nl.item(i).nodeName == nodename) return i
-        }
-        return -1
-    }
-
-    fun getDocument(start: LatLng, end: LatLng, mode: String): Document? {
-//        val url = ("http://maps.googleapis.com/maps/api/directions/xml?"
-//                + "origin=" + start.latitude + "," + start.longitude
-//                + "&destination=" + end.latitude + "," + end.longitude
-//                + "&sensor=false&units=metric&mode=driving")
-//
-//        try {
-//            val httpClient: HttpClient = DefaultHttpClient()
-//            val localContext: HttpContext = BasicHttpContext()
-//            val httpPost = HttpPost(url)
-//            val response: HttpResponse = httpClient.execute(httpPost, localContext)
-//            val `in`: InputStream = response.entity.content
-//            val builder: DocumentBuilder = DocumentBuilderFactory.newInstance()
-//                    .newDocumentBuilder()
-//            return builder.parse(`in`)
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//        }
-        return null
-    }
-
-    private fun getLocationPermission() {
-
-        if (ContextCompat.checkSelfPermission(this.applicationContext,
-                        Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            locationPermissionGranted = true
-        } else {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION)
-        }
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int,
-                                            permissions: Array<String>,
-                                            grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        locationPermissionGranted = false
-        when (requestCode) {
-            PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION -> {
-
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.isNotEmpty() &&
-                        grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    locationPermissionGranted = true
-                }
-            }
-        }
-        updateLocationUI()
-    }
-
+//    fun getDirectionUrl(orgin : LatLng, destination : LatLng) : String {
+//        return
+//    }
 }

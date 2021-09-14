@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RestaurentApp</string>
+    <string name="app_name">Quick Eat</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -13,9 +13,6 @@
     <string name="navigation_drawer_open">Drawer Open</string>
     <string name="navigation_drawer_close">Drawer Closed</string>
 
-
-    <string name="next">NEXT</string>
-    <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
 
     <string name="slide_1_title">Welcome to Quick Eat</string>

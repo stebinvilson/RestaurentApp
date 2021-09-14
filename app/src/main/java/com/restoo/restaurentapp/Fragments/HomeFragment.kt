@@ -6,17 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 import com.restoo.restaurentapp.Adapter.AdAdapter
 import com.restoo.restaurentapp.Adapter.FavFoodAdapter
 import com.restoo.restaurentapp.Adapter.RestaurentAdapter
+import com.restoo.restaurentapp.Application.QuickEat
 import com.restoo.restaurentapp.Helper.HomeFragmentHelper
 import com.restoo.restaurentapp.Interface.RestaurantAdapterListner
 import com.restoo.restaurentapp.R
 import com.restoo.restaurentapp.model.FoodItem
 import com.restoo.restaurentapp.model.Restaurents
+import com.restoo.restaurentapp.model.UserDetails
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
@@ -36,6 +39,7 @@ class HomeFragment : Fragment() , RestaurantAdapterListner {
     lateinit var recycler_offer : RecyclerView
     lateinit var progressBar : ProgressBar
     lateinit var  helper : HomeFragmentHelper
+    lateinit var mTxtUsername : TextView
 
 
 
@@ -54,14 +58,25 @@ class HomeFragment : Fragment() , RestaurantAdapterListner {
 //        progressBar.showContextMenu()
         EventListner()
         return view
-
-        return view
     }
 
     private fun setData() {
 
         setfooditems()
         setAd()
+        databaseReference.child("user").child(QuickEat.UserId).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var user : UserDetails? = snapshot.getValue(UserDetails::class.java)
+                if (user != null) {
+                    mTxtUsername.setText("Hi " + user.username)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
 
         databaseReference.child("QuickFood").child("1").child("Restaurent").addValueEventListener(object :
             ValueEventListener {
@@ -157,6 +172,7 @@ class HomeFragment : Fragment() , RestaurantAdapterListner {
 
     private fun Initialisation(view: View?) {
         if (view != null) {
+            mTxtUsername = view.findViewById(R.id.txt_username)
             recycler = view.findViewById(R.id.recyclerview_fooditems)
         }
         if (view != null) {

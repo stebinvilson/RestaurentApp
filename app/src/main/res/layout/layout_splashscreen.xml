@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/app_splash_icon"
+        android:background="@drawable/round_background"
+        android:layout_above="@id/app_title"
+        />
 
     <TextView
         android:id="@+id/app_title"
@@ -16,20 +23,22 @@
         android:textColor="#3EB489"
         android:fontFamily="@font/bungee"
         android:layout_centerInParent="true"/>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_signin"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign In"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        android:textAllCaps="false"
         android:layout_below="@+id/food3"
         android:layout_alignParentEnd="true"
-        android:textColor="@color/white"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="9dp"
         android:drawableEnd="@drawable/ic_baseline_trending_flat_24"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_marginEnd="10dp"/>
+        android:text="Sign In"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:textStyle="bold" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_register"

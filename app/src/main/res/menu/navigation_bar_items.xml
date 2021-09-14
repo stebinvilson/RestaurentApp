@@ -5,7 +5,7 @@
     <group>
 
     <item
-        android:id="@+id/Orders"
+        android:id="@+id/Pro"
         android:icon="@drawable/ic_shopping_bag"
         android:title="Orders"
         android:iconTint="@color/white"
@@ -35,7 +35,7 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/lagout"
+        android:id="@+id/logout"
         android:icon="@drawable/ic_baseline_logout_24"
         android:title="Log Out"
         android:contentDescription="content_description_lagout"
