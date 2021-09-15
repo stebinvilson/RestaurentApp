@@ -39,7 +39,6 @@
         app:boxStrokeColor="#246EE9"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        android:hint="Enter user name"
         android:layout_below="@id/txt_signup"
         android:layout_height="wrap_content">
 
@@ -61,7 +60,6 @@
         android:layout_width="match_parent"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        android:hint="Enter phone number"
         app:hintTextColor="@color/common_google_signin_btn_text_light"
         app:boxStrokeColor="#246EE9"
         android:layout_below="@id/name_text_input"
@@ -87,7 +85,6 @@
         app:hintTextColor="@color/common_google_signin_btn_text_light"
         app:boxStrokeColor="#246EE9"
         android:layout_marginStart="15dp"
-        android:hint="Enter email address"
         android:layout_marginEnd="15dp"
         app:errorEnabled="true"
         android:layout_below="@id/phonenumber_text_input"

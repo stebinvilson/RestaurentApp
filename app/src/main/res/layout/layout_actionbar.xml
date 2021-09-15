@@ -16,12 +16,14 @@
         android:id="@+id/txt_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="7dp"
-        android:text="Back"
-        android:drawablePadding="5dp"
+        android:text="back"
+        android:textSize="21dp"
+
+        android:fontFamily="@font/basic"
         android:textColor="@color/black"
         android:layout_gravity="center_vertical"
-        app:drawableStartCompat="@drawable/ic_baseline_arrow_back_24" />
+        android:layout_marginStart="15dp"
+        app:drawableStartCompat="@drawable/ic_baseline_arrow_back_ios_24" />
 
     <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"

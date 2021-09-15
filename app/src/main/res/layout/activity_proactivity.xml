@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/pro_actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:drawableStart="@drawable/ic_baseline_arrow_back_ios_24"
+            android:text="back"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/basic"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quick Eat Pro"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:fontFamily="@font/basic"
+            android:layout_centerInParent="true"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/black"/>
+    </RelativeLayout>
+    <ScrollView
+        android:id="@+id/scrollview_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/pro_actionbar">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/pro_actionbar">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/slider_cardview"
+        app:cardCornerRadius="6dp"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:elevation="10dp"
+        android:layout_height="wrap_content">
+
+        <com.smarteist.autoimageslider.SliderView
+            android:id="@+id/imageSlider"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:sliderAnimationDuration="600"
+            app:sliderAutoCycleDirection="back_and_forth"
+            app:sliderAutoCycleEnabled="true"
+            app:sliderIndicatorAnimationDuration="600"
+            app:sliderIndicatorGravity="center_horizontal|bottom"
+            app:sliderIndicatorMargin="15dp"
+            app:sliderIndicatorOrientation="horizontal"
+            app:sliderIndicatorPadding="3dp"
+            app:sliderIndicatorRadius="2dp"
+            app:sliderIndicatorSelectedColor="#000000"
+            app:sliderIndicatorUnselectedColor="#BFBFBF"
+            app:sliderScrollTimeInSec="1"
+            app:sliderStartAutoCycle="true" />
+
+    </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/app_icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_app_icon1"
+            android:layout_below="@+id/slider_cardview"/>
+        <TextView
+            android:id="@+id/title_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/app_icon"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="-20dp"
+            android:fontFamily="@font/bungee"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            />
+
+        <TextView
+            android:id="@+id/title_logo_pro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/app_icon"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="-20dp"
+            android:layout_toEndOf="@id/title_logo"
+            android:fontFamily="@font/bungee"
+            android:text="Pro"
+            android:textColor="#D8D8D8"
+            android:textSize="25dp" />
+
+        <blink
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_below="@+id/slider_cardview"
+            android:layout_alignParentEnd="true">
+
+        <TextView
+            android:id="@+id/bling_textview"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="5dp"
+            android:background="@drawable/round_background"
+            android:fontFamily="@font/holtwood_one_sc"
+            android:gravity="center"
+            android:text="Pro Member"
+            android:textColor="@color/blue"
+            android:textSize="15dp" />
+        </blink>
+        <View
+            android:id="@+id/view_pro_page"
+            android:layout_width="match_parent"
+            android:layout_height=".8dp"
+            android:layout_below="@id/title_logo"
+            android:background="@color/green"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/proplus_cardview"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:textSize="20dp"
+            android:layout_marginTop="15dp"
+            android:elevation="10dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/black"
+            android:backgroundTint="@color/blue"
+            android:layout_centerInParent="true"
+            android:layout_below="@+id/view_pro_page">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/txt_inviteonly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="11dp"
+                    android:elevation="10dp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/abhaya_libre_medium"
+                    android:backgroundTint="#FFC764"
+                    android:textAllCaps="false"
+                    android:text="invite only"/>
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:textSize="11dp"
+                    android:elevation="10dp"
+                    android:textStyle="bold"
+                    android:layout_toEndOf="@+id/txt_inviteonly"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/abhaya_libre_medium"
+                    android:backgroundTint="#F44336"
+                    android:textAllCaps="false"
+                    android:text="Limited edition"/>
+
+                <TextView
+                    android:id="@+id/txt_pro_plus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_inviteonly"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/abril_fatface"
+                    android:text="PRO PLUS"
+                    android:textColor="@color/white"
+                    android:textSize="30dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_pro_plus"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/dot_light_screen1"
+                    android:layout_centerHorizontal="true"
+                    android:text="Free delivery in all orders"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/rounded_background"
+                    android:fontFamily="@font/black_ops_one"
+                    android:text="Explore all benifits"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    app:backgroundTint="@color/white" />
+
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:layout_below="@+id/proplus_cardview">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:elevation="10dp"
+                android:backgroundTint="@color/browser_actions_bg_grey"
+                android:layout_marginTop="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/threemonthmembership"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/archivo_black"
+                        android:text="3 Month Membership"
+                        android:textColor="@color/black"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/plan_rate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$200"
+                        android:textSize="30dp"
+                        android:fontFamily="@font/inika_bold"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center_horizontal"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="70dp"
+                        />
+                    <TextView
+                        android:id="@+id/validity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="For 3 Months"
+                        android:fontFamily="@font/inika_bold"
+                        android:layout_below="@+id/plan_rate"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center_horizontal"
+                        android:textColor="#BFBDBD"
+                        android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:id="@+id/validacrossindia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/archivo_black"
+                        android:text="Valid across India"
+                        android:textSize="12dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:elevation="10dp"
+                android:backgroundTint="@color/browser_actions_bg_grey"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/proplus_cardview"
+                android:layout_marginStart="15dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/annualpromembership"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/archivo_black"
+                        android:text="Annual Pro Membership"
+                        android:gravity="center_horizontal"
+                        android:textColor="@color/black"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/annualplan_rate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$750"
+                        android:textSize="30dp"
+                        android:fontFamily="@font/inika_bold"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center_horizontal"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="70dp"
+                        />
+                    <TextView
+                        android:id="@+id/annualvalidity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="For 1 Year"
+                        android:fontFamily="@font/inika_bold"
+                        android:layout_below="@+id/annualplan_rate"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center_horizontal"
+                        android:textColor="#BFBDBD"
+                        android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:id="@+id/annualvalidacrossindia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/archivo_black"
+                        android:text="All pro benifits"
+                        android:textSize="12dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

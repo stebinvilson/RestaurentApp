@@ -17,8 +17,8 @@
             android:layout_marginStart="10dp"
             android:background="@color/white"
             android:layout_marginTop="10dp"
-            android:src="@drawable/ic_baseline_menu_24"
-            />
+            android:src="@drawable/ic_baseline_menu_24" />
+
         <ImageView
             android:id="@+id/home_back"
             android:layout_width="wrap_content"
@@ -28,22 +28,22 @@
             android:layout_marginTop="10dp"
             android:src="@drawable/ic_baseline_arrow_back_24"/>
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/home_searchview"
-        android:layout_width="match_parent"
-        android:layout_height="42dp"
-        android:background="@drawable/rounded_background"
-        android:layout_toEndOf="@+id/menu"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="5dp"
-        app:defaultQueryHint="Type Something"
-        app:queryBackground="@android:color/transparent"
-        app:iconifiedByDefault="false"
-        app:searchHintIcon="@color/black"
-        app:searchIcon="@drawable/ic_baseline_search_24"
-        app:closeIcon="@drawable/ic_baseline_close_24"
-        android:layout_marginTop="8dp"
-        android:layout_toStartOf="@+id/profile_image"/>
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/home_searchview"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:background="@drawable/rounded_background"
+            android:layout_toEndOf="@+id/menu"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            app:defaultQueryHint="Type Something"
+            app:queryBackground="@android:color/transparent"
+            app:iconifiedByDefault="false"
+            app:searchHintIcon="@color/black"
+            app:searchIcon="@drawable/ic_baseline_search_24"
+            app:closeIcon="@drawable/ic_baseline_close_24"
+            android:layout_marginTop="8dp"
+            android:layout_toStartOf="@+id/profile_image"/>
 
         <TextView
             android:id="@+id/home_title"
@@ -57,28 +57,27 @@
             android:textStyle="bold"
             android:layout_height="wrap_content"/>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
-        android:src="@color/black"
-        app:civ_border_width=".8dp"
-        android:scaleType="centerCrop"
-        app:civ_border_color="@color/black"
-        android:layout_marginStart="5dp"
-        android:layout_alignParentEnd="true"/>
-    </RelativeLayout>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:src="@color/black"
+            app:civ_border_width=".8dp"
+            android:scaleType="centerCrop"
+            app:civ_border_color="@color/black"
+            android:layout_marginStart="5dp"
+            android:layout_alignParentEnd="true"/>
 
+   </RelativeLayout>
 
     <include
         layout="@layout/contant_layout"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_below="@id/topbar"
-        android:layout_above="@id/bottom_navigation"
-        />
+        android:layout_above="@id/bottom_navigation" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"

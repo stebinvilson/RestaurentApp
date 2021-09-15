@@ -22,8 +22,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                android:fontFamily="@font/anton"
-                android:text="Hi Stebin Vilson,"
+                android:fontFamily="sans-serif-black"
+                android:text="dhjgcdvb"
                 android:textColor="@color/black"
                 android:textSize="24dp"
                 android:textStyle="bold" />
@@ -41,6 +41,7 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/basic"
                 android:layout_marginBottom="5dp"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview_fooditems"
                 android:layout_width="match_parent"
@@ -60,6 +61,7 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/basic"
                 android:layout_marginBottom="5dp"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview_offers"
                 android:layout_width="match_parent"
@@ -87,5 +89,4 @@
                 android:layout_below="@id/txt_restaurant"/>
         </RelativeLayout>
     </ScrollView>
-
 </RelativeLayout>

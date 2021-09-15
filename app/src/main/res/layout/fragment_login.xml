@@ -59,8 +59,7 @@
         android:layout_marginEnd="15dp"
         android:focusedByDefault="true"
         app:hintTextColor="@color/common_google_signin_btn_text_light"
-        app:boxStrokeColor="#246EE9"
-        android:hint="Please enter phone number">
+        app:boxStrokeColor="#246EE9">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -86,8 +85,7 @@
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
         app:startIconTint="@color/black"
         app:hintTextColor="@color/common_google_signin_btn_text_light"
-        app:boxStrokeColor="#246EE9"
-        android:hint="Please enter password">
+        app:boxStrokeColor="#246EE9">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
